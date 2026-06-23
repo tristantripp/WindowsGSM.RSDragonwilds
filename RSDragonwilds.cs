@@ -33,7 +33,7 @@ namespace WindowsGSM.Plugins
         public string Error, Notice;
 
         // Fixed variables - StartPath must be an override property
-	public override string StartPath => @"RSDragonwilds.exe";
+        public override string StartPath => @"RSDragonwilds\Binaries\Win64\RSDragonwildsServer-Win64-Shipping.exe";
         public string FullName = "RuneScape: Dragonwilds Dedicated Server";
         public bool AllowsEmbedConsole = false;
         public int PortIncrements = 1;
@@ -106,37 +106,8 @@ namespace WindowsGSM.Plugins
             });
             await Task.Delay(20000);
         }
-
-        public async Task<Process> Install()
-        {
-            var steamCMD = new Installer.SteamCMD();
-            Process p = await steamCMD.Install(_serverData.ServerID, string.Empty, AppId);
-            Error = steamCMD.Error;
-            return p;
-        }
-
-        public async Task<Process> Update(bool validate = false, string custom = null)
-        {
-            var (p, error) = await Installer.SteamCMD.UpdateEx(_serverData.ServerID, AppId, validate, custom: custom);
-            Error = error;
-            return p;
-        }
-
-        public bool IsInstallValid()
-        {
-            return File.Exists(Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, StartPath));
-        }
-
-        public string GetLocalBuild()
-        {
-            var steamCMD = new Installer.SteamCMD();
-            return steamCMD.GetLocalBuild(_serverData.ServerID, AppId);
-        }
-
-        public async Task<string> GetRemoteBuild()
-        {
-            var steamCMD = new Installer.SteamCMD();
-            return await steamCMD.GetRemoteBuild(AppId);
-        }
+        
+        // Removed Install, Update, IsInstallValid, GetLocalBuild, and GetRemoteBuild
+        // The SteamCMDAgent base class will natively handle these automatically.
     }
 }
