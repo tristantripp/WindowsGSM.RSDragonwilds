@@ -8,6 +8,15 @@ A WindowsGSM plugin to deploy and manage a RuneScape: Dragonwilds Dedicated Serv
 4. Restart or click **Reload Plugins** inside WindowsGSM.
 
 ## Vital Setup Note
-The server will crash on launch without an Admin ID. 
-Before starting the server, go to the server settings inside WindowsGSM and add your player ID to the **Additional Launch Parameters** field:
-`-OwnerId=YOUR_PLAYER_ID`
+**The server will fail to launch without a valid Owner ID.**
+
+Before playing, you must add your in-game Player ID to the server's configuration file. 
+
+1. Launch RuneScape: Dragonwilds and go to the **Settings** menu.
+2. Look at the bottom-left corner of the screen and copy your **Player ID**.
+3. Start the server once in WindowsGSM. *(It will fail to fully launch, which is normal, but this generates the necessary configuration folders).*
+4. Navigate to your server files: `serverfiles\RSDragonwilds\Saved\Config\WindowsServer\DedicatedServer.ini`
+5. Open the file and add your Player ID under the settings block:
+```ini
+   [/Script/Dominion.DedicatedServerSettings]
+   OwnerId=YOUR_PLAYER_ID
