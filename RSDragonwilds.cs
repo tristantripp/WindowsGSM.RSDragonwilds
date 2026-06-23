@@ -33,7 +33,7 @@ namespace WindowsGSM.Plugins
         public string Error, Notice;
 
         // Fixed variables - StartPath must be an override property
-        public override string StartPath => @"RSDragonwilds\Binaries\Win64\RSDragonwildsServer-Win64-Shipping.exe";
+	public override string StartPath => @"RSDragonwilds.exe";
         public string FullName = "RuneScape: Dragonwilds Dedicated Server";
         public bool AllowsEmbedConsole = false;
         public int PortIncrements = 1;
